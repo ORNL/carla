@@ -127,7 +127,7 @@ void ACarlaGameModeBase::InitGame(
   Recorder->SetEpisode(Episode);
   Episode->SetRecorder(Recorder);
 
-  ParseOpenDrive(Episode->MapName);
+  ParseOpenDrive();
 
   if(Map.has_value())
   {
@@ -276,7 +276,7 @@ void ACarlaGameModeBase::GenerateSpawnPoints()
   }
 }
 
-void ACarlaGameModeBase::ParseOpenDrive(const FString &MapName)
+void ACarlaGameModeBase::ParseOpenDrive()
 {
   std::string opendrive_xml = carla::rpc::FromLongFString(UOpenDrive::GetXODR(GetWorld()));
   Map = carla::opendrive::OpenDriveParser::Load(opendrive_xml);
